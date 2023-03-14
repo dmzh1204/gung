@@ -1160,29 +1160,29 @@ var tempDouble;
 var tempI64;
 
 var ASM_CONSTS = {
- 3472492: function() {
+ 3475932: function() {
   Module["emscripten_get_now_backup"] = performance.now;
  },
- 3472547: function($0) {
+ 3475987: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 3472595: function($0) {
+ 3476035: function($0) {
   performance.now = function() {
    return $0;
   };
  },
- 3472643: function() {
+ 3476083: function() {
   performance.now = Module["emscripten_get_now_backup"];
  },
- 3472698: function() {
+ 3476138: function() {
   return Module.webglContextAttributes.premultipliedAlpha;
  },
- 3472759: function() {
+ 3476199: function() {
   return Module.webglContextAttributes.preserveDrawingBuffer;
  },
- 3472823: function() {
+ 3476263: function() {
   return Module.webglContextAttributes.powerPreference;
  }
 };
@@ -13966,6 +13966,7 @@ var asmLibraryArg = {
  "invoke_fiiiiii": invoke_fiiiiii,
  "invoke_i": invoke_i,
  "invoke_ii": invoke_ii,
+ "invoke_iifii": invoke_iifii,
  "invoke_iii": invoke_iii,
  "invoke_iiifi": invoke_iiifi,
  "invoke_iiii": invoke_iiii,
@@ -14524,6 +14525,8 @@ var dynCall_viiiifffii = Module["dynCall_viiiifffii"] = createExportWrapper("dyn
 
 var dynCall_viffffi = Module["dynCall_viffffi"] = createExportWrapper("dynCall_viffffi");
 
+var dynCall_iifii = Module["dynCall_iifii"] = createExportWrapper("dynCall_iifii");
+
 var dynCall_fiiiiii = Module["dynCall_fiiiiii"] = createExportWrapper("dynCall_fiiiiii");
 
 var dynCall_fiffi = Module["dynCall_fiffi"] = createExportWrapper("dynCall_fiffi");
@@ -14563,8 +14566,6 @@ var dynCall_viffiifffiii = Module["dynCall_viffiifffiii"] = createExportWrapper(
 var dynCall_ffffffi = Module["dynCall_ffffffi"] = createExportWrapper("dynCall_ffffffi");
 
 var dynCall_viiiiiifi = Module["dynCall_viiiiiifi"] = createExportWrapper("dynCall_viiiiiifi");
-
-var dynCall_iifii = Module["dynCall_iifii"] = createExportWrapper("dynCall_iifii");
 
 var dynCall_fifffi = Module["dynCall_fifffi"] = createExportWrapper("dynCall_fifffi");
 
@@ -15466,6 +15467,17 @@ function invoke_vidii(index, a1, a2, a3, a4) {
  var sp = stackSave();
  try {
   dynCall_vidii(index, a1, a2, a3, a4);
+ } catch (e) {
+  stackRestore(sp);
+  if (e !== e + 0 && e !== "longjmp") throw e;
+  _setThrew(1, 0);
+ }
+}
+
+function invoke_iifii(index, a1, a2, a3, a4) {
+ var sp = stackSave();
+ try {
+  return dynCall_iifii(index, a1, a2, a3, a4);
  } catch (e) {
   stackRestore(sp);
   if (e !== e + 0 && e !== "longjmp") throw e;
